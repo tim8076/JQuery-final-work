@@ -1,0 +1,263 @@
+@import "reset";
+@import "config";
+@import "utility";
+
+body{
+   font-family: 'Noto Sans TC', sans-serif;
+}
+//繼承樣式 start
+%link{
+    display: block;
+    transition: all .3s;
+}
+%jumbotorn-pic{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 346px;
+}
+%jumbotron-txt{
+    @include font(6);
+    color: #fff;
+    padding: 1.5em ;
+    background-color: rgba(0,0,0,.3);
+}
+%titile-txt{
+    @include font(4);
+    text-align: center;
+    margin-bottom: 20px;
+}
+//繼承樣式 end
+
+//改寫套件樣式 start
+.swiper-button-prev:after,
+.swiper-button-next:after{
+   font-size : font(6);
+   font-weight: bolder;
+   color: $primaryColor;
+}
+.swiper-pagination-bullet{
+    width: 12px;
+    height: 12px;
+    background-color: $primaryColor;
+    opacity: 0.5;
+}
+.swiper-pagination-bullet-active{
+    opacity: 1;
+}
+.lb-nav a.lb-prev{
+    left: -20%;
+}
+.lb-nav a.lb-next{
+    right: -20%;
+}
+
+//改寫套件樣式 end
+
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.scroll-top{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $primaryColor;
+    opacity: .5;
+    position: fixed;
+    bottom: 20%;
+    right: 10%;
+    text-align: center;
+    line-height: 60px; 
+    cursor: pointer; 
+    i{
+        font-size: 24px;
+        color: $secondaryColor;
+    }
+}
+.social-links{
+    display: flex;
+    justify-content: flex-end;
+    background-color: $secondaryColor;
+    a{
+        @extend %link;
+        padding: 12px 10px;
+        img{
+            margin-right: 3px;
+        }
+    }
+    .fb{
+        color:#4460a0; 
+        &:hover{
+               color:#95b2f7;
+            }
+    }
+    .twitter{
+        color: #00aaec;
+        &:hover{
+                color:#98e2ff;
+        }   
+    }
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    >ul{
+        display: flex;
+        .nav-link{
+           @extend %link;
+           @include font(1);
+           padding: 1.2em;
+           color: $primaryColor;
+           &:hover{
+               color:darken($primaryColor, 10%);
+           }
+        }
+        >li{
+            position: relative;
+            &:hover{
+                .submenu{
+                    display: block;
+                }
+            }
+        }
+    }
+    .submenu{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        text-align: center;
+        display: none;
+        a{
+           @extend %link;
+           @include font(1);
+           padding: 0.5em 0; 
+           background-color: $primaryColor;
+           color: $secondaryColor;
+           &:hover{
+                background-color:#fff;
+                color:$primaryColor;
+           }
+        }
+    }
+}
+.jumbotron-1{
+    @extend %jumbotorn-pic;
+    background: url('/images/banner.png') no-repeat center center / cover;
+    h1{
+       @extend %jumbotron-txt;
+    }
+}
+.jumbotron-2{
+    @extend %jumbotorn-pic;
+    background: url('/images/bg_course.png') no-repeat center center / cover;
+    h1{
+       @extend %jumbotron-txt;
+    }
+}
+.jumbotron-3{
+    @extend %jumbotorn-pic;
+    background: url('/images/bg_index.png') no-repeat center center / cover;
+    h1{
+       @extend %jumbotron-txt;
+    }
+}
+
+.course-cards{
+    display: flex;
+    justify-content: space-between;
+    .course-card{
+        box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+        width: 31.333333%;
+        margin: 0 1%;
+        .img{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+        }
+        .text{
+            h2{
+              text-align: center;
+              margin-bottom: 5px;
+              @include font(2);
+            }
+            p{
+              @include font(1,24px);
+            }      
+        }
+    }
+}
+.competition{
+    h2{
+       @extend %titile-txt;
+    }
+    table{
+        width: 100%;
+        text-align: left;
+        th,td{
+            padding: 0.8em 1.2em;
+            border-top: 1px solid  darken($secondaryColor,5%);
+            border-bottom: 2px solid  darken($secondaryColor,5%);
+        }
+        th{
+          background-color: $secondaryColor;
+        }
+        tr:hover{
+          background-color: $secondaryColor;
+        }
+        .green{
+            color:$primaryColor;
+        }
+    }
+}
+.submit{
+    color: #fff;
+    background: linear-gradient(to bottom ,#00644b,#009772);
+    padding: 30px 20px;
+    h3{
+        margin-bottom: 30px;
+        @extend %titile-txt;
+    }
+    .form{
+        display: flex;
+        justify-content: space-between;
+        textarea{
+            width: 47%;
+        }
+        .input-area{
+            @include font(1);
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            flex-wrap: wrap;
+            width: 47%;
+            text-align: left;
+            input{
+                display: block;
+                border-radius: 5px;
+                padding: 0.6em 1em;
+                margin-bottom: 15px;
+                margin-top: 5px;
+                border: none;
+            }
+            input:last-child{
+                width: 15%;
+                align-self: flex-end;
+            }
+        }
+    }
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    p{
+      @include font(1);
+        span{
+           color: red; 
+        }
+    }   
+}
