@@ -1,0 +1,31 @@
+
+//共用元件 按鈕
+.btn{
+    display: inline-block;
+    line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+.btn{
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0.5em 1em;
+    color: rgba(0,0,0,0.8);
+    border: none;
+    background-color: #e6e6e6;
+    text-decoration: none;
+    border-radius: 2px;
+}
+.btn-primary{
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    transition: all .3s;
+    &:hover{
+        background-color: darken($primaryColor , 3%);
+    }
+}
